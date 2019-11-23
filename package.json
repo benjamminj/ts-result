@@ -13,7 +13,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "size": "yarn build && size-limit"
   },
   "peerDependencies": {},
   "husky": {
@@ -21,9 +22,15 @@
       "pre-commit": "tsdx lint"
     }
   },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "150 B"
+    }
+  ],
   "prettier": {
     "printWidth": 80,
-    "semi": true,
+    "semi": false,
     "singleQuote": true,
     "trailingComma": "es5"
   },
@@ -33,5 +40,8 @@
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@size-limit/preset-small-lib": "^2.2.1"
   }
 }
